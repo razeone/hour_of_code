@@ -1,15 +1,47 @@
-# React + TypeScript + Vite
+# Pokédex App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Pokédex web application built with React, TypeScript, and Vite. Browse, search, and explore Pokémon using data from the PokéAPI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📋 **Pokémon Grid** - Browse Pokémon in a responsive card grid
+- 🔍 **Global Search** - Search across all 1000+ Pokémon by name
+- 📄 **Pagination** - Navigate through pages of 20 Pokémon
+- 🏷️ **Type Badges** - Color-coded type badges for each Pokémon
+- ⏳ **Loading Skeletons** - Smooth loading states
+- ⚠️ **Error Handling** - Graceful error boundaries and retry options
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Fast build tool
+- **PokéAPI** - Pokémon data source
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/     # React components
+├── hooks/          # Custom React hooks
+├── types/          # TypeScript interfaces
+├── utils/          # API utilities
+├── App.tsx         # Main app component
+└── main.tsx        # Entry point
+```
 
 ## Expanding the ESLint configuration
 

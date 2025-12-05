@@ -282,7 +282,7 @@ setup.sh, and run ./setup.sh.
 
 ## For The Presentation
 
-**Create a Pokédex web application** using the existing React + TypeScript + Vite setup in `pokemon-api`. 
+**Create a Pokédex web application** using the existing React + TypeScript + Vite setup in `pokedex-app`. 
 
 The app should use the PokéAPI to fetch and display Pokémon data.
 
@@ -319,7 +319,7 @@ Remember to use `@workspace`
 ### New better plan:
 
 #### Phase 1: Foundation & Setup
-* Project Structure - Set up folder organization (components, hooks, types, utils, styles)
+* Project Structure - Set up folder organization in `pokedex-app` (components, hooks, types, utils, styles)
 * TypeScript Interfaces - Define all API response types for PokéAPI
 * API Utility - Create base API fetching functions
 
