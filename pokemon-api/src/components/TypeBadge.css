@@ -1,0 +1,47 @@
+.type-badge {
+  display: inline-block;
+  color: white;
+  font-weight: 600;
+  text-transform: capitalize;
+  border-radius: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Sizes */
+.type-badge--small {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+}
+
+.type-badge--medium {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.type-badge--large {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Clickable state */
+.type-badge--clickable {
+  cursor: pointer;
+}
+
+.type-badge--clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.type-badge--clickable:active {
+  transform: scale(0.98);
+}
+
+/* Badge list container */
+.type-badge-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
