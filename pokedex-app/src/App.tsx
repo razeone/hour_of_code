@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePokemonList, usePokemonSearch } from './hooks';
-import { PokemonGrid, Pagination, ErrorBoundary, SearchBar } from './components';
+import { PokemonGrid, Pagination, ErrorBoundary, SearchBar, PokemonModal } from './components';
+import type { PokemonCardData } from './types';
 import './App.css';
 
 const ITEMS_PER_PAGE = 20;
@@ -8,6 +9,7 @@ const ITEMS_PER_PAGE = 20;
 function App() {
   const { pokemon, loading, error, totalCount, loadPage, currentPage } = usePokemonList();
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPokemonId, setSelectedPokemonId] = useState<number | null>(null);
   
   // Global search hook
   const { results: searchResults, loading: searchLoading, error: searchError } = usePokemonSearch(searchTerm);
@@ -17,6 +19,14 @@ function App() {
   const handlePageChange = (page: number) => {
     loadPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePokemonClick = (pokemon: PokemonCardData) => {
+    setSelectedPokemonId(pokemon.id);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPokemonId(null);
   };
 
   // Determine what to display
@@ -49,6 +59,7 @@ function App() {
             pokemon={displayPokemon}
             loading={displayLoading}
             error={displayError}
+            onCardClick={handlePokemonClick}
             onRetry={() => isSearching ? setSearchTerm(searchTerm) : loadPage(currentPage)}
           />
 
@@ -66,6 +77,8 @@ function App() {
           <p>Data from <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a></p>
         </footer>
       </div>
+
+      <PokemonModal pokemonId={selectedPokemonId} onClose={handleCloseModal} />
     </ErrorBoundary>
   );
 }

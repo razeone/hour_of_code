@@ -5,3 +5,6 @@ export { PokemonCard } from './PokemonCard';
 export { PokemonGrid } from './PokemonGrid';
 export { Pagination } from './Pagination';
 export { SearchBar } from './SearchBar';
+export { PokemonDetail } from './PokemonDetail';
+export { PokemonStats } from './PokemonStats';
+export { PokemonModal } from './PokemonModal';
