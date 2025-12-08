@@ -81,8 +81,9 @@
 .pokemon-card__id {
   position: relative;
   z-index: 1;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: var(--font-vt323);
+  font-size: 1rem;
+  font-weight: 400;
   color: #888;
   letter-spacing: 0.5px;
 }
@@ -92,8 +93,9 @@
   position: relative;
   z-index: 1;
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-silkscreen);
+  font-size: 0.85rem;
+  font-weight: 400;
   color: #333;
   text-align: center;
 }

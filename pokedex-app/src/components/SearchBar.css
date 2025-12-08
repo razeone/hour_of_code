@@ -25,13 +25,15 @@
   flex: 1;
   border: none;
   outline: none;
-  font-size: 1rem;
+  font-family: var(--font-vt323);
+  font-size: 1.3rem;
   background: transparent;
   color: #333;
 }
 
 .search-bar__input::placeholder {
   color: #999;
+  font-family: var(--font-vt323);
 }
 
 .search-bar__clear {

@@ -16,16 +16,19 @@
 
 .app-title {
   margin: 0;
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-family: var(--font-pixel);
+  font-size: 1.8rem;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
 }
 
 .app-subtitle {
-  margin: 0.5rem 0 0;
-  font-size: 1rem;
+  margin: 1rem 0 0;
+  font-family: var(--font-silkscreen);
+  font-size: 1.1rem;
   opacity: 0.9;
 }
 
@@ -56,11 +59,12 @@
 
 .app-footer p {
   margin: 0;
-  font-size: 0.875rem;
+  font-family: var(--font-vt323);
+  font-size: 1.2rem;
 }
 
 .app-footer a {
-  color: #ff6b6b;
+  color: #ffcb05;
   text-decoration: none;
 }
 
@@ -75,7 +79,11 @@
   }
 
   .app-title {
-    font-size: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
   }
 
   .app-main {

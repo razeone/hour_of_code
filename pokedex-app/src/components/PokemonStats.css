@@ -15,22 +15,24 @@
 
 /* Stat Name */
 .pokemon-stats__name {
-  font-size: 0.8rem;
+  font-family: var(--font-vt323);
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
 }
 
 /* Stat Value */
 .pokemon-stats__value {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  font-weight: 400;
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
 .pokemon-stats__value--total {
   color: #60a5fa;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 /* Bar Container */

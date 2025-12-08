@@ -91,24 +91,28 @@
 }
 
 .pokemon-detail__id {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: var(--font-vt323);
+  font-size: 1.2rem;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.05em;
 }
 
 .pokemon-detail__name {
-  font-size: 2rem;
-  font-weight: 800;
+  font-family: var(--font-pixel);
+  font-size: 1.3rem;
+  font-weight: 400;
   margin: 0;
   text-transform: capitalize;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
 }
 
 .pokemon-detail__genus {
+  font-family: var(--font-silkscreen);
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
-  font-style: italic;
+  font-style: normal;
   margin-bottom: 0.5rem;
 }
 

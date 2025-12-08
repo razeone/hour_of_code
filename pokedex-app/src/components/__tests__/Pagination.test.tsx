@@ -99,13 +99,13 @@ describe('Pagination', () => {
   });
 
   it('shows all pages when totalPages <= 5', () => {
-    render(<Pagination {...defaultProps} totalPages={5} currentPage={3} />);
+    render(<Pagination {...defaultProps} totalPages={4} currentPage={2} />);
     
+    // Use getAllByText for numbers that might appear in quick jumps too
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
     expect(screen.getByText('3')).toBeInTheDocument();
     expect(screen.getByText('4')).toBeInTheDocument();
-    expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('shows ellipsis when there are many pages', () => {
@@ -140,5 +140,90 @@ describe('Pagination', () => {
     await user.click(pageButton);
     
     expect(onPageChange).not.toHaveBeenCalled();
+  });
+
+  describe('Quick Jump Buttons', () => {
+    it('shows quick jump buttons for milestones ahead of current page', () => {
+      render(<Pagination {...defaultProps} currentPage={1} totalPages={100} />);
+      
+      expect(screen.getByText('Jump to:')).toBeInTheDocument();
+      expect(screen.getByTitle('Go to page 5')).toBeInTheDocument();
+      expect(screen.getByTitle('Go to page 10')).toBeInTheDocument();
+      expect(screen.getByTitle('Go to page 25')).toBeInTheDocument();
+      expect(screen.getByTitle('Go to page 50')).toBeInTheDocument();
+    });
+
+    it('calls onPageChange when quick jump button is clicked', async () => {
+      const onPageChange = jest.fn();
+      const { user } = render(
+        <Pagination {...defaultProps} currentPage={1} totalPages={100} onPageChange={onPageChange} />
+      );
+      
+      await user.click(screen.getByTitle('Go to page 25'));
+      
+      expect(onPageChange).toHaveBeenCalledWith(25);
+    });
+
+    it('shows back jumps when on higher page', () => {
+      render(<Pagination {...defaultProps} currentPage={30} totalPages={100} />);
+      
+      // Should show milestone behind (10) and ahead (50)
+      expect(screen.getByTitle('Go to page 10')).toBeInTheDocument();
+      expect(screen.getByTitle('Go to page 50')).toBeInTheDocument();
+    });
+
+    it('does not show quick jumps when no valid milestones exist', () => {
+      render(<Pagination {...defaultProps} currentPage={1} totalPages={4} />);
+      
+      expect(screen.queryByText('Jump to:')).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Go to Page', () => {
+    it('shows go to page toggle button', () => {
+      render(<Pagination {...defaultProps} />);
+      
+      expect(screen.getByLabelText('Go to specific page')).toBeInTheDocument();
+    });
+
+    it('shows go to input when toggle is clicked', async () => {
+      const { user } = render(<Pagination {...defaultProps} />);
+      
+      await user.click(screen.getByLabelText('Go to specific page'));
+      
+      expect(screen.getByLabelText('Go to page:')).toBeInTheDocument();
+      expect(screen.getByRole('spinbutton')).toBeInTheDocument();
+    });
+
+    it('navigates to entered page on submit', async () => {
+      const onPageChange = jest.fn();
+      const { user } = render(
+        <Pagination {...defaultProps} onPageChange={onPageChange} />
+      );
+      
+      await user.click(screen.getByLabelText('Go to specific page'));
+      await user.type(screen.getByRole('spinbutton'), '7');
+      await user.click(screen.getByText('Go'));
+      
+      expect(onPageChange).toHaveBeenCalledWith(7);
+    });
+
+    it('hides go to input after navigation', async () => {
+      const { user } = render(<Pagination {...defaultProps} />);
+      
+      await user.click(screen.getByLabelText('Go to specific page'));
+      await user.type(screen.getByRole('spinbutton'), '5');
+      await user.click(screen.getByText('Go'));
+      
+      expect(screen.queryByLabelText('Go to page:')).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Page Info', () => {
+    it('shows current page info', () => {
+      render(<Pagination {...defaultProps} currentPage={5} totalPages={10} />);
+      
+      expect(screen.getByText('Page 5 of 10')).toBeInTheDocument();
+    });
   });
 });

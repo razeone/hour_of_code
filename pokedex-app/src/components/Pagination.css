@@ -1,9 +1,68 @@
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+}
+
+/* Quick Jump Buttons */
+.pagination__quick-jumps {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination__quick-label {
+  font-family: var(--font-vt323);
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.pagination__quick-button {
+  padding: 0.35rem 0.75rem;
+  border: 2px solid #3b4cca;
+  background: linear-gradient(135deg, #3b4cca, #5a6de8);
+  border-radius: 20px;
+  font-family: var(--font-vt323);
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination__quick-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2a3ba9, #4a5dd8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(59, 76, 202, 0.3);
+}
+
+.pagination__quick-button--back {
+  background: linear-gradient(135deg, #666, #888);
+  border-color: #666;
+}
+
+.pagination__quick-button--back:hover:not(:disabled) {
+  background: linear-gradient(135deg, #555, #777);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pagination__quick-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Main Pagination */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  padding: 2rem 0;
   flex-wrap: wrap;
 }
 
@@ -19,8 +78,9 @@
   border: 2px solid #e0e0e0;
   background: #fff;
   border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  font-weight: 400;
   color: #333;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -63,8 +123,123 @@
   font-weight: 600;
 }
 
+/* Go to Page Toggle */
+.pagination__goto-toggle {
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #ffcb05;
+  background: linear-gradient(135deg, #ffcb05, #ffd633);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.pagination__goto-toggle:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e6b800, #ffcb05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 203, 5, 0.4);
+}
+
+.pagination__goto-toggle:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Go to Page Form */
+.pagination__goto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #f5f5f5;
+  border-radius: 12px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagination__goto-label {
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.pagination__goto-input {
+  width: 80px;
+  height: 36px;
+  padding: 0 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.pagination__goto-input:focus {
+  outline: none;
+  border-color: #3b4cca;
+}
+
+.pagination__goto-input::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+.pagination__goto-submit {
+  height: 36px;
+  padding: 0 1rem;
+  border: none;
+  background: linear-gradient(135deg, #cc0000, #ff3333);
+  border-radius: 6px;
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination__goto-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #aa0000, #dd2222);
+}
+
+.pagination__goto-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Page Info */
+.pagination__info {
+  font-family: var(--font-vt323);
+  font-size: 1.1rem;
+  color: #888;
+  font-weight: 400;
+}
+
 /* Mobile adjustments */
 @media (max-width: 480px) {
+  .pagination-container {
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
   .pagination {
     gap: 0.25rem;
   }
@@ -74,5 +249,24 @@
     height: 36px;
     padding: 0 0.5rem;
     font-size: 0.85rem;
+  }
+
+  .pagination__quick-jumps {
+    gap: 0.35rem;
+  }
+
+  .pagination__quick-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .pagination__goto {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination__goto-input {
+    width: 70px;
+    height: 32px;
   }
 }

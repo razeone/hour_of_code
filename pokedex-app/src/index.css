@@ -3,7 +3,20 @@
 }
 
 :root {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  /* Pokemon-style fonts */
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-silkscreen: 'Silkscreen', cursive;
+  --font-vt323: 'VT323', monospace;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* Pokemon colors */
+  --color-pokemon-red: #cc0000;
+  --color-pokemon-red-light: #ff3333;
+  --color-pokemon-blue: #3b4cca;
+  --color-pokemon-yellow: #ffcb05;
+  --color-pokemon-gold: #b3a125;
+  
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
   color: #333;
@@ -26,17 +39,33 @@ body {
 
 a {
   font-weight: 500;
-  color: #cc0000;
+  color: var(--color-pokemon-red);
   text-decoration: none;
 }
 
 a:hover {
-  color: #ff3333;
+  color: var(--color-pokemon-red-light);
   text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
+}
+
+/* Main app title - Use pixel font */
+h1 {
+  font-family: var(--font-pixel);
+}
+
+/* Section headings - Use silkscreen */
+h2, h3 {
+  font-family: var(--font-silkscreen);
+}
+
+/* Smaller headings and labels */
+h4, h5, h6 {
+  font-family: var(--font-vt323);
+  font-size: 1.3em;
 }
 
 button {
@@ -46,4 +75,17 @@ button {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Utility classes for fonts */
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+.font-silkscreen {
+  font-family: var(--font-silkscreen);
+}
+
+.font-vt323 {
+  font-family: var(--font-vt323);
 }
