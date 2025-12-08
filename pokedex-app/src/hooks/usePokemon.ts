@@ -223,8 +223,8 @@ export function usePokemonSearch(searchTerm: string): {
   useEffect(() => {
     const fetchAllNames = async () => {
       try {
-        // Fetch a large list of Pokemon names (first 1000 covers all)
-        const response = await fetchPokemonList(1000, 0);
+        // Fetch all Pokemon names including forms (1500 covers all ~1328)
+        const response = await fetchPokemonList(1500, 0);
         setAllPokemonNames(response.results);
       } catch (err) {
         console.error('Failed to fetch Pokemon names:', err);
@@ -246,11 +246,16 @@ export function usePokemonSearch(searchTerm: string): {
       setError(null);
 
       try {
-        const lowerSearch = searchTerm.toLowerCase();
+        const lowerSearch = searchTerm.toLowerCase().trim();
+        // Also search with spaces replaced by hyphens (e.g., "dragonite mega" -> "dragonite-mega")
+        const hyphenatedSearch = lowerSearch.replace(/\s+/g, '-');
         
-        // Filter names that match the search
+        // Filter names that match the search (check both original and hyphenated)
         const matches = allPokemonNames
-          .filter((p) => p.name.toLowerCase().includes(lowerSearch))
+          .filter((p) => {
+            const name = p.name.toLowerCase();
+            return name.includes(lowerSearch) || name.includes(hyphenatedSearch);
+          })
           .slice(0, 20); // Limit to 20 results
 
         if (matches.length === 0) {
